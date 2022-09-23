@@ -21,16 +21,14 @@ class complex_numbers:
             return  - math.pi + math.atan ( self.Im / self.Re )
 
     def get_complex_num (self):                   # Получение самого числа в виде Re(x) + i Im(x)
-        print( complex(self.Re, self.Im))
+        return  complex (self.Re, self.Im)
     
     def get_conjugate_num (self):                 # Получение сопряженного числа  Re(x) - i Im(x)
-        return complex(self.Re, - self.Im)
+        return complex (self.Re, - self.Im)
         
-    def set_Re (self, x):   # Изменение действительной части
+    def set (self, x, y):   
         self.Re = x
-        
-    def set_Im (self, x):   # Изменение мнимой части 
-        self.Im = x
+        self.Im = y
         
  # Экспоненциальная форма, или туда и обратно :)
  
