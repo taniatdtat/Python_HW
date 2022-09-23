@@ -35,7 +35,7 @@ class complex_numbers:
  # Экспоненциальная форма, или туда и обратно :)
  
     def to_exponential_form (self) :        
-        return ( str(self.get_module()) + 'exp' + '(' +  str(self.get_argument) + ')')   
+        return (str((self.get_module())) + '*exp' + '(' +  str(self.get_argument()) + ')'   )
 
     def from_exponential_form (self) :
         return complex (self.get_module() * math.cos (self.get_argument()) , self.get_module() * math.sin (self.argument()))
@@ -59,8 +59,8 @@ class complex_numbers:
 
 
 
-
-""" z1 = complex_numbers (1, 1)
+"""
+z1 = complex_numbers (1, 1)
 z2 = complex_numbers (3, 4)
 
 
@@ -73,6 +73,7 @@ print ('arg = ', z1.get_argument())
 
 print(z1.get_complex_num())
 print (z1.get_conjugate_num())
+
 print (z2.to_exponential_form ())
 print(z1.from_exponential_form ) """
 
