@@ -33,7 +33,7 @@ class complex_numbers:
  # Экспоненциальная форма, или туда и обратно :)
  
     def to_exponential_form (self) :        
-        return (str((self.get_module())) + '*exp' + '(' +  str(self.get_argument()) + ')'   )
+        return self.get_module() , self.get_argument()
 
     def from_exponential_form (self) :
         return complex (self.get_module() * math.cos (self.get_argument()) , self.get_module() * math.sin (self.argument()))
@@ -52,7 +52,6 @@ class complex_numbers:
     def __truediv__(self, other):
         return complex((self.Re*other.Re + self.Im*other.Im)/(other.Re**2 + other.Im**2) ,  (- self.Re*other.Im + self.Im*other.Re)/(other.Re**2 + other.Im**2))
     
-            
 
 
 
@@ -69,11 +68,12 @@ print(z1.__truediv__(z2))
 print ('module = ' , z2.get_module())
 print ('arg = ', z1.get_argument())
 
-print(z1.get_complex_num())
-print (z1.get_conjugate_num())
+#print(z1.get_complex_num())
+#print (z1.get_conjugate_num())
 
 print (z2.to_exponential_form ())
-print(z1.from_exponential_form ) """
+print(z1.from_exponential_form )
+"""
 
 
 
