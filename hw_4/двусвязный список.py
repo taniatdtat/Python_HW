@@ -27,11 +27,22 @@ class Node:
     def __str__(self):
         return str(self.get_value())
 
+
+    
+
 class List:
+
     def __init__(self, collection = None):
         self._start_pointer = None
         self._finish_pointer = None
         self._length = 0
+        
+        if isinstance(collection, int):
+            self.append(collection)
+
+        elif isinstance(collection, list):
+            self + collection
+
 
     def __len__(self):
         return self._length
@@ -89,7 +100,7 @@ class List:
 
 
 
-A = List()
+A = List([777,333])
 B = List()
 
 for i in range(8):
