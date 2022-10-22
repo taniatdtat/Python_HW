@@ -1,5 +1,7 @@
 import math
 class Complex_numbers:
+    exp = None # не смогла придумать как без переменной класса нормально переопределить print
+                          #чтобы понимать когда в какой форме (экспоненциальной или нет) печатать 
 
     def __init__ (self, Re, Im):
         self.set(Re,Im)
@@ -8,21 +10,20 @@ class Complex_numbers:
         self.Re = x
         self.Im = y
 
-
     def __abs__ (self):
-        return math.sqrt ( ( self.Re **2 ) + ( self.Im**2 ) )
+        return round(math.sqrt ( ( self.Re **2 ) + ( self.Im**2 ) ),2)
 
     def get_argument (self):
         if self.Re == 0 and self.Im  > 0 :
-            return math.pi / 2
+            return round(math.pi / 2, 2)
         elif self.Re == 0 and self.Im  < 0 :
-            return  - math.pi / 2
+            return round( - math.pi / 2,2)
         elif self.Re > 0:
-            return math.atan ( self.Im / self.Re )
+            return round(math.atan ( self.Im / self.Re ),2)
         elif self.Re <  0 and self.Im >= 0:
-            return math.pi + math.atan ( self.Im / self.Re )
+            return round(math.pi + math.atan ( self.Im / self.Re ),2)
         elif self.Re <  0 and self.Im < 0:
-            return  - math.pi + math.atan ( self.Im / self.Re )
+            return round( - math.pi + math.atan ( self.Im / self.Re ),2)
 
     def get (self):                 
         return  self.Re, self.Im
@@ -49,11 +50,13 @@ class Complex_numbers:
         
  # Экспоненциальная форма
  
-    def to_exponential_form (self) :        
-        return abs(self) , self.get_argument()
+    def to_exponential_form (self) :
+        Complex_numbers.exp = True
+        return Complex_numbers(abs(self) , self.get_argument())
 
     def from_exponential_form (self) :
-        return Complex_numbers( abs(self) * math.cos (self.get_argument()) , abs(self) * math.sin (self.get_argument()))
+        Complex_numbers.exp = False
+        return Complex_numbers(round(self[0] * math.cos (self[1]),2) , round(self[0]* math.sin (self[1]),2))
     
 # сложение, вычитание, умножение, деление
 
@@ -84,17 +87,21 @@ class Complex_numbers:
              return Complex_numbers ( (self.Re*other.Re + self.Im*other.Im)/(other.Re**2 + other.Im**2) ,  (- self.Re*other.Im + self.Im*other.Re)/(other.Re**2 + other.Im**2))
         else:
              return Complex_numbers (self.Re / other,  self.Im /other)
-'''
+
 # печать
     def __str__(self):
-        return str(self[0]) + ' + '  + str(self[1])+ 'i'
+        if Complex_numbers.exp :
+            return str(self[0]) + ' *exp(  '  + str(self[1])+ ' )'
+        else:
+            if self[1]>=0:
+                return str(self[0]) + ' + '  + str(self[1])+ 'i'
+            else:
+                return str(self[0]) + ' - '  + str(-self[1])+ 'i'
 
-        #return str(self.r) + ' exp(  '  + str(self.arg)+ ' )'
-
-     '''      
+    
 z1 = Complex_numbers (2, 5)
 z2 = Complex_numbers (3, 4)
-'''
+
 print(z1[0])
 print(z1)
 z1[0] = 11
@@ -102,11 +109,13 @@ print(z1)
 print(z1+z2)
 print(z1- z2)
 print(z1*z2)
-print(z1/z2)'''
+print(z1/z2)
 print ('module z1 = ' , abs(z1))
 print ('arg z1 = ', z1.get_argument())
 
-print(z1.to_exponential_form)
+
+print(z1.to_exponential_form())
+print(z1.from_exponential_form())
 
 
 
