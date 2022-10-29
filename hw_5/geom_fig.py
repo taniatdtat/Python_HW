@@ -39,12 +39,17 @@ class Polygon (Shape):
         k = 0
         for arg in self._args:
             k+=1
-        return int(k)
+        return k
             
     def perimeter(self):
         p = 0
         for i  in  range(self.kol_arg() -1) :
+          #  if isinstance(self._args[i],Point):
+               # print(self._args[i])
+                #print(self._args[i].get_x())
             p += dist(self._args[i], self._args[i+1])
+        
+        p +=dist(self._args[0], self._args[-1])
         return round(p,2)
     
     
@@ -66,7 +71,7 @@ class Triangle(Polygon):
         return round((pp * (pp - self._a) * (pp - self._b) * (pp - self._c)) ** 0.5, 2)
 
 class Tetragon (Polygon):
-        def __init__(self, p1, p2, p3,p4, type="Tetragon"):
+        def __init__(self, p1, p2, p3,p4, type = "Tetragon"):
             super().__init__(p1, p2, p3, p4, type)
             self._point_1 = p1
             self._point_2 = p2
@@ -117,9 +122,8 @@ class Circle ( Shape):
 
 
    
-        
 a = Triangle(Point(), Point(1, 1), Point(2, 3))
 print(a)
-b = Circle (Point(1, 1), 3)
-c = Tetragon(Point(), Point(0, 1), Point(2, 2), Point(2,0))
-print(b)
+'''b = Circle (Point(1, 1), 3)
+c = Tetragon(Point(), Point(0, 1), Point(2, 1), Point(2,0))
+print(b)'''
