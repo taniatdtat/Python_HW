@@ -145,7 +145,7 @@ elif operacia == '/':
     try:
         print (z1 / z2)
     except ZeroDivisionError:
-        print( "Давайте не будем делить на ноль. Ведите другое число")
+        print( "Давайте не будем делить на ноль. Введите другое число")
                
 elif operacia == 'to_exp':
     print ('z1 = ', z1.to_exponential_form())
