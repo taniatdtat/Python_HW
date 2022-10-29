@@ -32,8 +32,8 @@ class Shape:
 
 class Polygon (Shape):
     def __init__(self, *args, type = "Polygon"):
-        self._type = type
         self._args = args
+        self._type = type
 
     def kol_arg(self):
         k = 0
@@ -43,13 +43,9 @@ class Polygon (Shape):
             
     def perimeter(self):
         p = 0
-        for i  in  range(self.kol_arg() -1) :
-          #  if isinstance(self._args[i],Point):
-               # print(self._args[i])
-                #print(self._args[i].get_x())
+        for i  in  range(self.kol_arg() -2) :
             p += dist(self._args[i], self._args[i+1])
-        
-        p +=dist(self._args[0], self._args[-1])
+        p +=dist(self._args[0], self._args[-2])
         return round(p,2)
     
     
@@ -57,10 +53,11 @@ class Triangle(Polygon):
     def __init__(self, p1, p2, p3, type="Triangle"):
         super().__init__(p1, p2, p3, type)
         
+
         self._point_1 = p1
         self._point_2 = p2
         self._point_3 = p3
-        
+
 
         self._a = dist (self._point_1, self._point_2)
         self._b = dist (self._point_2, self._point_3)
@@ -77,14 +74,16 @@ class Tetragon (Polygon):
             self._point_2 = p2
             self._point_3 = p3
             self._point_4 = p4
+       
 
             
 class Rectangle(Tetragon):
         def __init__(self, p1, p2, p3, p4, type = "Rectangle"):
-            super().__init__(p1, p2, p3, p4, type)
-            
+            super().__init__(p1, p2, p3, p4,type)
+    
             self._a = dist (self._point_1, self._point_2)
             self._b = dist (self._point_2, self._point_3)
+        
 
         def area(self):
             return  round (self._a * self._b , 2)
@@ -93,6 +92,7 @@ class Rectangle(Tetragon):
 class Square (Rectangle):
     def __init__(self, p1, p2, p3, p4, type = "Square"):
         super().__init__(p1, p2, p3, p4, type)
+
             
     
 class Rhombus (Tetragon ):
@@ -122,8 +122,11 @@ class Circle ( Shape):
 
 
    
-a = Triangle(Point(), Point(1, 1), Point(2, 3))
-print(a)
-'''b = Circle (Point(1, 1), 3)
-c = Tetragon(Point(), Point(0, 1), Point(2, 1), Point(2,0))
-print(b)'''
+#a = Triangle(Point(), Point(1, 1), Point(2, 3))
+
+
+#b = Circle (Point(1, 1), 3)
+c = Rectangle(Point(), Point(0, 1), Point(2, 1), Point(2,0))
+d = Square(Point(), Point(0, 1), Point(1, 1), Point(1,0))
+print(d)
+#print(c)
