@@ -1,4 +1,9 @@
 import math
+import numbers 
+
+class myExeption(Exception):
+    pass
+
 class Complex_numbers:
     exp = None # не смогла придумать как без переменной класса нормально переопределить print
                           #чтобы понимать когда в какой форме (экспоненциальной или нет) печатать 
@@ -6,9 +11,13 @@ class Complex_numbers:
     def __init__ (self, Re, Im):
         self.set(Re,Im)
 
-    def set (self, x, y):   
-        self.Re = x
-        self.Im = y
+    def set (self, x, y):
+        
+        if isinstance (x, numbers.Number) and isinstance (y, numbers.Number):
+            self.Re = x
+            self.Im = y
+        else:
+            raise ValueError 
 
     def __abs__ (self):
         return round(math.sqrt ( ( self.Re **2 ) + ( self.Im**2 ) ),2)
@@ -51,6 +60,9 @@ class Complex_numbers:
  # Экспоненциальная форма
  
     def to_exponential_form (self) :
+        if self.Re ==0 and self.Im == 0 :
+            raise myExeption ("Не верно введены исходные данные")
+            
         Complex_numbers.exp = True
         return Complex_numbers(abs(self) , self.get_argument())
 
@@ -99,12 +111,11 @@ class Complex_numbers:
                 return str(self[0]) + ' - '  + str(-self[1])+ 'i'
 
     
-z1 = Complex_numbers (2, 5)
+z1 = Complex_numbers (0, 0)
 z2 = Complex_numbers (3, 4)
-
 print(z1[0])
 print(z1)
-z1[0] = 11
+
 print(z1)
 print(z1+z2)
 print(z1- z2)
