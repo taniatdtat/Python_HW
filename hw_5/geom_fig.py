@@ -51,7 +51,7 @@ class Polygon (Shape):
     
 class Triangle(Polygon):
     def __init__(self, p1, p2, p3, type="Triangle"):
-        super().__init__(p1, p2, p3, type)
+        super().__init__(p1, p2, p3, type = type)
         
 
         self._point_1 = p1
@@ -69,7 +69,7 @@ class Triangle(Polygon):
 
 class Tetragon (Polygon):
         def __init__(self, p1, p2, p3,p4, type = "Tetragon"):
-            super().__init__(p1, p2, p3, p4, type)
+            super().__init__(p1, p2, p3, p4, type = type)
             self._point_1 = p1
             self._point_2 = p2
             self._point_3 = p3
@@ -79,7 +79,7 @@ class Tetragon (Polygon):
             
 class Rectangle(Tetragon):
         def __init__(self, p1, p2, p3, p4, type = "Rectangle"):
-            super().__init__(p1, p2, p3, p4,type)
+            super().__init__(p1, p2, p3, p4,type=type)
     
             self._a = dist (self._point_1, self._point_2)
             self._b = dist (self._point_2, self._point_3)
@@ -91,13 +91,13 @@ class Rectangle(Tetragon):
 
 class Square (Rectangle):
     def __init__(self, p1, p2, p3, p4, type = "Square"):
-        super().__init__(p1, p2, p3, p4, type)
+        super().__init__(p1, p2, p3, p4, type = type)
 
             
     
 class Rhombus (Tetragon ):
     def __init__(self, p1, p2, p3, p4, type = "Rhombus"):
-        super().__init__(p1, p2, p3, p4, type)
+        super().__init__(p1, p2, p3, p4, type = type)
         
         self._diag_1 = dist(self._point_1, self._point_3)
         self._diad_2 = dist(self._point_2, self._point_4)
@@ -129,4 +129,4 @@ class Circle ( Shape):
 c = Rectangle(Point(), Point(0, 1), Point(2, 1), Point(2,0))
 d = Square(Point(), Point(0, 1), Point(1, 1), Point(1,0))
 print(d)
-#print(c)
+print(c)
