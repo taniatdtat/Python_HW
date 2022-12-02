@@ -1,4 +1,4 @@
-def dec_reverse_args(foo):    #разворачиваем аргументы
+def dec_reverse_args(foo):   
     def wrapper (*args):
         arr = []
         for x in args:
